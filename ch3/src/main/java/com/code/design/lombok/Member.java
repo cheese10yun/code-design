@@ -23,7 +23,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 @Table(name = "member")
 @Data
 @Builder
-@NoArgsConstructor
+//@NoArgsConstructor
 public class Member {
 
     @Id
