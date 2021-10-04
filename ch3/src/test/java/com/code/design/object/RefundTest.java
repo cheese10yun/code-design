@@ -3,8 +3,6 @@ package com.code.design.object;
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.api.BDDAssertions.thenThrownBy;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,16 +19,6 @@ class RefundTest {
             .address1("서울시 관악구 293-1")
             .address2("201호")
             .zip("503-23")
-            .build();
-
-        final List<Product> products = new ArrayList<>();
-
-
-        ProductBuilder
-
-        Order order = Order.builder()
-            .address(address)
-            .products(products)
             .build();
 
         account = Account.builder()
@@ -80,9 +68,8 @@ class RefundTest {
 
     @Test
     public void ByCreditBuilder_test_account_null이면_excpetion() {
-
         thenThrownBy(() -> Refund.ByCreditBuilder()
-            .creditCard(null)
+            .creditCard()
             .order(order)
             .build()
         )
@@ -98,5 +85,4 @@ class RefundTest {
         )
             .isInstanceOf(IllegalArgumentException.class);
     }
-
 }
