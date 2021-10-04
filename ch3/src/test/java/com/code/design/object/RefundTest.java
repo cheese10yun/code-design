@@ -13,8 +13,7 @@ class RefundTest {
     private CreditCard creditCard;
 
     @BeforeEach
-    public void setUp() throws Exception {
-
+    public void setUp() {
         final Address address = Address.builder()
             .address1("서울시 관악구 293-1")
             .address2("201호")
@@ -31,10 +30,14 @@ class RefundTest {
             .creditNumber("110-22345-22345")
             .creditHolder("홍길동")
             .build();
+
+        order = Order.builder()
+            .address(address)
+            .build();
     }
 
     @Test
-    public void ByAccountBuilder_test_account_null이면_excpetion() {
+    public void ByAccountBuilder_test_account_null이면_exception() {
 
         thenThrownBy(() -> Refund.ByAccountBuilder()
             .account(null)
@@ -45,7 +48,7 @@ class RefundTest {
     }
 
     @Test
-    public void ByAccountBuilder_testorder_null이면_excpetion() {
+    public void ByAccountBuilder_testorder_null이면_exception() {
         thenThrownBy(() -> Refund.ByAccountBuilder()
             .account(account)
             .order(null)
@@ -67,9 +70,9 @@ class RefundTest {
 
 
     @Test
-    public void ByCreditBuilder_test_account_null이면_excpetion() {
-        thenThrownBy(() -> Refund.ByCreditBuilder()
-            .creditCard()
+    public void ByCreditBuilder_test_account_null이면_exception() {
+        thenThrownBy(() -> Refund.ByAccountBuilder()
+            .account(null)
             .order(order)
             .build()
         )
@@ -77,7 +80,7 @@ class RefundTest {
     }
 
     @Test
-    public void ByCreditBuilder_testorder_null이면_excpetion() {
+    public void ByCreditBuilder_test_order_null이면_exception() {
         thenThrownBy(() -> Refund.ByCreditBuilder()
             .creditCard(creditCard)
             .order(null)
