@@ -1,7 +1,7 @@
 package com.code.design.part2;
 
-import static org.assertj.core.api.Java6BDDAssertions.then;
-import static org.assertj.core.api.Java6BDDAssertions.thenThrownBy;
+import static org.assertj.core.api.BDDAssertions.then;
+import static org.assertj.core.api.BDDAssertions.thenThrownBy;
 
 import org.junit.jupiter.api.Test;
 
