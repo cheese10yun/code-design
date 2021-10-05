@@ -1,0 +1,119 @@
+
+# 무통장 결제 주문
+POST {{host}}/orders
+Content-Type: application/json
+
+{
+  "price": 100.00,
+  "payment": {
+    "paymentMethod": "BANK_TRANSFER",
+    "account": {
+      "number": "110-202034-2234",
+      "bankCode": "2003",
+      "holder": "홍길동"
+    }
+  },
+  "address": {
+    "city": "NOWON-GU",
+    "state": "SEOUL",
+    "zipCode": "09876"
+  }
+}
+
+###
+
+
+# 카드 결제 주문
+POST {{host}}/orders
+Content-Type: application/json
+
+
+{
+  "price": 100.00,
+  "payment": {
+    "paymentMethod": "CARD",
+    "card": {
+      "number": "25523-22394",
+      "brand": "323",
+      "csv": "삼성카드"
+    }
+  },
+  "address": {
+    "city": "NOWON-GU",
+    "state": "SEOUL",
+    "zipCode": "09876?"
+  }
+}
+
+###
+
+# 무통장 결제 주문
+# 계좌번호 없는 경
+POST {{host}}/orders
+Content-Type: application/json
+
+{
+  "price": 100.00,
+  "payment": {
+    "paymentMethod": "BANK_TRANSFER",
+    "account": {
+      "bankCode": "2003",
+      "holder": "홍길동"
+    }
+  },
+  "address": {
+    "city": "NOWON-GU",
+    "state": "SEOUL",
+    "zipCode": "09876"
+  }
+}
+
+###
+
+# 무통장 결제 주문
+# 무통장 결제인데 카드 정보 입력하는 경우
+POST {{host}}/orders
+Content-Type: application/json
+
+{
+  "price": 100.00,
+  "payment": {
+    "paymentMethod": "BANK_TRANSFER",
+    "card": {
+      "number": "25523-22394",
+      "brand": "323",
+      "csv": "삼성카드"
+    }
+  },
+  "address": {
+    "city": "NOWON-GU",
+    "state": "SEOUL",
+    "zipCode": "09876"
+  }
+}
+
+###
+
+# 카드 결제 주문
+# 카드 결제인데 무통장 정보 입력하는 경우
+POST {{host}}/orders
+Content-Type: application/json
+
+{
+  "price": 100.00,
+  "payment": {
+    "paymentMethod": "CARD",
+    "account": {
+      "number": "110-202034-2234",
+      "bankCode": "2003",
+      "holder": "홍길동"
+    }
+  },
+  "address": {
+    "city": "NOWON-GU",
+    "state": "SEOUL",
+    "zipCode": "09876"
+  }
+}
+
+###

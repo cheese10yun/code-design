@@ -27,6 +27,7 @@ public class OrderSheetFormValidator implements ConstraintValidator<OrderSheetFo
 
             if (card == null) {
                 addConstraintViolation(context, "카드 필수입니다.", "payment", "card");
+                invalidCount += 1;
             } else {
                 if (ObjectUtils.isEmpty(card.getBrand())) {
                     addConstraintViolation(context, "카드 브렌드는 필수입니다.", "payment", "card", "brand");
