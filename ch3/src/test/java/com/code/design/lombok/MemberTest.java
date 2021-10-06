@@ -1,8 +1,5 @@
 package com.code.design.lombok;
 
-import static org.assertj.core.api.BDDAssertions.then;
-
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.jupiter.api.Test;
@@ -36,7 +33,7 @@ class MemberTest {
         coupons.add(coupon);
         member.setCoupons(coupons);
 
-        System.out.println(member); // toString 순한 참조 발생, java.lang.StackOverflowError
+        System.out.println(member); // toString 순한 참조 발생, java.la
     }
 
     @Test

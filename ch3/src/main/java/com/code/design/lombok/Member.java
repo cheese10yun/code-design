@@ -27,12 +27,9 @@ public class Member {
 
     @Column(name = "email", nullable = false, updatable = false, unique = true)
     private String email;
-//    private String email = "test@test.com"; // @Builder.Default 테스트할 때 사용
 
-//    @Builder.Default
     @Column(name = "name", nullable = false)
     private String name;
-//    private String name = "yun"; // @Builder.Default 테스트할 때 사용
 
     @OneToMany
     @JoinColumn(name = "coupon_id")

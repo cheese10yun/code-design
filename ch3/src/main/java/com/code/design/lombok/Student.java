@@ -8,12 +8,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.Builder;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "student")
-@Builder
 public class Student {
 
     @Id
@@ -33,4 +34,21 @@ public class Student {
     @UpdateTimestamp
     @Column(name = "update_at", nullable = false)
     private LocalDateTime updateAt;
+
+    @Builder
+    public Student(final String email, final String name) {
+        this.email = email;
+        this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+            "id=" + id +
+            ", email='" + email + '\'' +
+            ", name='" + name + '\'' +
+            ", createAt=" + createAt +
+            ", updateAt=" + updateAt +
+            '}';
+    }
 }
