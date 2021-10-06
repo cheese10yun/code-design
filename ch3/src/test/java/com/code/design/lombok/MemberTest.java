@@ -1,41 +1,48 @@
-//package com.code.design.lombok;
-//
-//import static org.assertj.core.api.BDDAssertions.then;
-//
-//import java.time.LocalDateTime;
-//import java.util.ArrayList;
-//import java.util.List;
-//import org.junit.jupiter.api.Test;
-//
-//class MemberTest {
-//
-//    @Test
-//    public void setter_남용의_문제() {
-//
-//    }
-//
-//    @Test
-//    public void toString_양방향_순한_참조_문제() {
-//        final Member member = Member.builder()
-//            .email("asd@asd.com")
-//            .name("name")
-//            .build();
-//
-//        final Coupon coupon = Coupon.builder()
-//            .member(member)
-//            .build();
-//
-//        final List<Coupon> coupons = new ArrayList<>();
-//        coupons.add(coupon);
-//        member.setCoupons(coupons);
-//
-//        System.out.println(member); // toString 순한 참조 발생, java.lang.StackOverflowError
-//    }
-//
-//    @Test
-//    public void EqualsAndHashCode_의_문제() {
-//    }
-//
+package com.code.design.lombok;
+
+import static org.assertj.core.api.BDDAssertions.then;
+
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.jupiter.api.Test;
+
+class MemberTest {
+
+    @Test
+    public void setter_남용의_문제() {
+        // 우리는 회원에 대한 이메일 변경 기능을 제공하지 않는다.
+        final Member member = new Member();
+
+        // bean 방식
+        member.setEmail("asd@asd.com");
+        member.setName("name");
+        // 객체 생성 완료
+        // 앞으로 추가적인 이메일 변경은 불가능 해야한다.
+
+        member.setEmail("new@asd.com");
+    }
+
+    @Test
+    public void toString_양방향_순한_참조_문제() {
+        final Member member = new Member();
+        member.setEmail("asd@asd.com");
+        member.setName("name");
+
+        final Coupon coupon = new Coupon();
+        coupon.setMember(member);
+
+        final List<Coupon> coupons = new ArrayList<>();
+        coupons.add(coupon);
+        member.setCoupons(coupons);
+
+        System.out.println(member); // toString 순한 참조 발생, java.lang.StackOverflowError
+    }
+
+    @Test
+    public void EqualsAndHashCode_의_문제() {
+    }
+
 //    @Test
 //    public void 클래스_상단의_Builder_의_문제() {
 //
@@ -69,9 +76,9 @@
 //            .email("asd@asd.com")
 //            .build();
 //
-//        Coupon.builder()
-//            .member(member)
-//            .build();
+////        Coupon.builder()
+////            .member(member)
+////            .build();
 //
 //    }
 //
@@ -80,4 +87,4 @@
 //        final Coupon coupon = new Coupon(); // 필수값, 비지니스로직을 모두 무시하고 객체 생성 가능
 //        final Member member = new Member(); // 필수값, 비지니스로직을 모두 무시하고 객체 생성 가능
 //    }
-//}
+}

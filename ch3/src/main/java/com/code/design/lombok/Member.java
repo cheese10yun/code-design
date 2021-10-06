@@ -11,19 +11,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.ToString.Exclude;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 @Table(name = "member")
 @Data
-@Builder
-//@NoArgsConstructor
 public class Member {
 
     @Id
@@ -41,6 +36,7 @@ public class Member {
 
     @OneToMany
     @JoinColumn(name = "coupon_id")
+    @Exclude
     private List<Coupon> coupons = new ArrayList<>();
 
     @CreationTimestamp
