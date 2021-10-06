@@ -21,17 +21,17 @@ public class MemberApi {
         return memberRepository.findAll();
     }
 
+    // rollback 진행 O
     @PostMapping("/unchekced")
     public Member unchekced() {
         final Member member = memberService.createUncheckedException();
         return member;
     }
 
-
+    // rollback 진행 X
     @PostMapping("/chekced")
     public Member chekced() throws IOException {
         final Member member = memberService.createCheckedException();
         return member;
     }
-
 }

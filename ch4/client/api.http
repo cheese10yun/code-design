@@ -1,0 +1,11 @@
+GET localhost:8080/members
+
+###
+
+POST localhost:8080/members/unchekced
+
+###
+
+POST localhost:8080/members/chekced
+
+###
