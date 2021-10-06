@@ -8,48 +8,75 @@ import org.junit.jupiter.api.Test;
 class AccountTest {
 
     @Test
-    public void Account_accountHolder_비어있으면_exception() {
+    public void Account_account_holder_비어있으면_exception() {
         thenThrownBy(() -> Account.builder()
             .accountHolder("")
-            .accountNumber("110-22345-22345")
-            .bankName("신한은행")
+            .bankName("KB")
+            .accountNumber("11010101010")
             .build()
-        )
-            .isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    public void Account_accountNumber_비어있으면_exception() {
+    public void Account_account_holder_null_exception() {
         thenThrownBy(() -> Account.builder()
-            .accountHolder("홍길동")
-            .accountNumber("")
-            .bankName("신한은행")
+            .accountHolder(null)
+            .bankName("KB")
+            .accountNumber("11010101010")
             .build()
-        )
-            .isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    public void Account_bankName_비어있으면_exception() {
+    public void Account_bank_name_비어있으면_exception() {
         thenThrownBy(() -> Account.builder()
-            .accountHolder("홍길동")
-            .accountNumber("110-22345-22345")
+            .accountHolder("yun")
             .bankName("")
+            .accountNumber("11010101010")
             .build()
-        )
-            .isInstanceOf(IllegalArgumentException.class);
+        ).isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
-    public void Account_모든_필수값을_입력() {
+    public void Account_bank_name_null_exception() {
+        thenThrownBy(() -> Account.builder()
+            .accountHolder("yun")
+            .bankName(null)
+            .accountNumber("11010101010")
+            .build()
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void Account_account_number_비어있으면_exception() {
+        thenThrownBy(() -> Account.builder()
+            .accountHolder("yun")
+            .bankName("KB")
+            .accountNumber("")
+            .build()
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void Account_account_number_null_exception() {
+        thenThrownBy(() -> Account.builder()
+            .accountHolder("yun")
+            .bankName("KB")
+            .accountNumber(null)
+            .build()
+        ).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    public void Account_모든_필수값을_입력_하면_성공() {
         final Account account = Account.builder()
-            .accountHolder("홍길동")
-            .accountNumber("110-22345-22345")
-            .bankName("신한은행")
+            .accountHolder("yun")
+            .bankName("KB")
+            .accountNumber("11010101010")
             .build();
 
-        then(account.getAccountHolder()).isEqualTo("홍길동");
-        then(account.getAccountNumber()).isEqualTo("110-22345-22345");
-        then(account.getBankName()).isEqualTo("신한은행");
+        then(account.getAccountHolder()).isEqualTo("yun");
+        then(account.getBankName()).isEqualTo("KB");
+        then(account.getAccountNumber()).isEqualTo("11010101010");
     }
 }
