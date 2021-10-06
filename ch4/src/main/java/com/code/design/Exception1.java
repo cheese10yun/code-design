@@ -47,7 +47,6 @@ public class Exception1 {
         System.out.println(name);
     }
 
-    // 예외가 발생하면 로그를 찍고, 더 구체적인 예외를 발생 시킨다.
     // 예외 처리가 가능하다면, Exception을 발생시키지 않고 로직적으로 풀어낸다
     public void doXXX4(final Long id) {
         String name = null;
