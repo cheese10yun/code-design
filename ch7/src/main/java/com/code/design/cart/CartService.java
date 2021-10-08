@@ -15,6 +15,6 @@ public class CartService {
     public void deleteCart(Order order) {
         System.out.println("CurrentTransactionName: " + TransactionSynchronizationManager.getCurrentTransactionName());
         cartRepository.deleteByProductId(order.getProductId());
-        throw new RuntimeException("runtime exception ...."); // 예외 발생
+//        throw new RuntimeException("runtime exception ...."); // 예외 발생
     }
 }

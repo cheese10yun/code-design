@@ -17,5 +17,4 @@ public class OrderEventHandler {
     public void orderCompletedEventListener(OrderCompletedEvent event) {
         cartService.deleteCart(event.getOrder());
     }
-
 }

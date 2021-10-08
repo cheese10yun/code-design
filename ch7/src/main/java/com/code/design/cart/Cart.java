@@ -7,13 +7,16 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 @Entity
 @Table(name = "cart")
 @Getter
-@   ToString
+@ToString
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Cart {
 
     @Id
@@ -23,6 +26,7 @@ public class Cart {
     @Column(name = "product_id", nullable = false)
     private Long productId;
 
-    @Column(name = "member_id", nullable = false, updatable = false)
-    private Long memberId;
+    public Cart(Long productId) {
+        this.productId = productId;
+    }
 }
