@@ -1,6 +1,7 @@
 package com.code.design.test_3;
 
 import static org.assertj.core.api.BDDAssertions.then;
+import static org.assertj.core.api.BDDAssertions.thenThrownBy;
 
 import com.code.design.Member;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class Test_2 {
 
     @Test
     public void thenThrownBy_사용법() {
-
+        thenThrownBy(() -> new Member(""))
+            .isInstanceOf(IllegalArgumentException.class)
     }
 }

@@ -24,8 +24,8 @@ public class Member {
     @Column(name = "name", nullable = false)
     private String name;
 
-    public Member(String message) {
-        Assert.hasText("asd", message);
-        this.name = message;
+    public Member(String name) {
+        Assert.hasText(name, "name must not be empty");
+        this.name = name;
     }
 }
