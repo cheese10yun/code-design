@@ -1,7 +1,9 @@
 package com.code.design.member;
 
 import com.code.design.EmailSenderService;
+import com.code.design.coupon.CouponIssueService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.event.TransactionalEventListener;
 
@@ -11,8 +13,9 @@ public class MemberEventHandler {
 
     private final EmailSenderService emailSenderService;
 
+//    @EventListener
     @TransactionalEventListener
-    public void MemberEventListener(MemberSignedUpEvent event) {
-        emailSenderService.sendSignUpEmail(event.getMember());
+    public void memberSignedUpEventListener(MemberSignedUpEvent dto){
+        emailSenderService.sendSignUpEmail(dto.getMember());
     }
 }

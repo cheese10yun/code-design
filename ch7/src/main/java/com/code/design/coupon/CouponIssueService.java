@@ -14,7 +14,6 @@ public class CouponIssueService {
     @Transactional
     public void issueSignUpCoupon(Long memberId) {
         couponRepository.save(new Coupon(BigDecimal.TEN, memberId));
-        throw new RuntimeException("RuntimeException....");
+//        throw new RuntimeException("RuntimeException....");
     }
-
 }

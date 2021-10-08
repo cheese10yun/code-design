@@ -19,7 +19,8 @@ public class EmailSenderService {
      * 외부 인프라 서비스를 호출한다고 가정한다
      */
     public void sendSignUpEmail(Member member) {
-        System.out.println(member.getName() + " 님 회원가입을 축하드립니다.");
+        throw new RuntimeException("회원 가입 이메일 전송 실패");
+//        System.out.println(member.getName() + " 님 회원가입을 축하드립니다.");
     }
 
 }
