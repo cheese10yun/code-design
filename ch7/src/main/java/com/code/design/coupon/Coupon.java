@@ -24,4 +24,9 @@ public class Coupon {
 
     @Column(name = "member_id", nullable = false, updatable = false)
     private Long memberId;
+
+    public Coupon(BigDecimal amount, Long memberId) {
+        this.amount = amount;
+        this.memberId = memberId;
+    }
 }

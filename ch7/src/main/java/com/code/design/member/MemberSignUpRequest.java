@@ -1,5 +1,12 @@
 package com.code.design.member;
 
-public class MemberSignUpRequest {
+import lombok.Getter;
 
+@Getter
+public class MemberSignUpRequest {
+    private String name;
+
+    public Member toEntity() {
+        return new Member(name);
+    }
 }
