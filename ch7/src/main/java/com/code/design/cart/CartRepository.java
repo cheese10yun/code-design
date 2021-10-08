@@ -1,5 +1,7 @@
 package com.code.design.cart;
 
-public class CartRepository extends JpaRepository<Cart, Long> {
+import org.springframework.data.jpa.repository.JpaRepository;
 
+public interface CartRepository extends JpaRepository<Cart, Long> {
+    void deleteByProductId(Long productId);
 }

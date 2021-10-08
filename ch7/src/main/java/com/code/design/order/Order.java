@@ -28,5 +28,10 @@ public class Order {
     @Embedded
     private Orderer orderer;
 
+    public Order(Long productId, BigDecimal productAmount, Orderer orderer) {
+        this.productId = productId;
+        this.productAmount = productAmount;
+        this.orderer = orderer;
+    }
 }
 
