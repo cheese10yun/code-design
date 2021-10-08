@@ -14,7 +14,6 @@ public class MemberSignUpService {
     private final MemberRepository memberRepository;
     private final CouponIssueService couponIssueService;
     private final EmailSenderService emailSenderService;
-    private final ApplicationEventPublisher applicationEventPublisher;
 
     @Transactional
     public void signUp(final MemberSignUpRequest dto) {
