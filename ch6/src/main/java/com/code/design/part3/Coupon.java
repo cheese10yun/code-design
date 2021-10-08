@@ -26,10 +26,6 @@ public class Coupon {
         this.used = false;
     }
 
-    public boolean isExpiration() {
-        return LocalDate.now().isAfter(expirationDate);
-    }
-
     public void apply() {
         verifyCouponIsAvailable();
         this.used = true;
@@ -40,15 +36,19 @@ public class Coupon {
         verifyUsed();
     }
 
-    private void verifyUsed() {
-        if (used) {
-            throw new IllegalStateException("이미 사용한 쿠폰입니다.");
-        }
+    private boolean isExpiration() {
+        return LocalDate.now().isAfter(expirationDate);
     }
 
     private void verifyExpiration() {
-        if (LocalDate.now().isAfter(getExpirationDate())) {
-            throw new IllegalStateException("사용 기간이 만료된 쿠폰입니다.");
+        if (isExpiration()) {
+            throw new IllegalArgumentException("만료된 쿠폰입니다.");
+        }
+    }
+
+    private void verifyUsed() {
+        if (this.used) {
+            throw new IllegalArgumentException("이미 사용한 쿠폰입니다.");
         }
     }
 }
