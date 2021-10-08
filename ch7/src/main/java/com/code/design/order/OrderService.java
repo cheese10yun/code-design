@@ -18,8 +18,7 @@ public class OrderService {
     @Transactional
     public void doOrder(OrderRequest dto) {
         System.out.println("CurrentTransactionName: " + TransactionSynchronizationManager.getCurrentTransactionName());
-        final Order order = orderRepository.save(dto.toEntity());
-        emailSenderService.sendOrderEmail(order);
-        cartService.deleteCart(order);
+        final Order order = orderRepository.save(dto.toEntity()); // 1. order 엔티티 영속화
+        cartService.deleteCart(order); // 2. 주문상품 장바구니 제거
     }
 }
