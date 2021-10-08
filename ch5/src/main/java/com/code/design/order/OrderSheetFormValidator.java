@@ -17,7 +17,7 @@ public class OrderSheetFormValidator implements ConstraintValidator<OrderSheetFo
     public boolean isValid(OrderSheetRequest value, ConstraintValidatorContext context) {
         int invalidCount = 0;
 
-        if (value.getPayment().hasPaymentInfo()) {
+        if (value.getPayment().getAccount() == null && value.getPayment().getCard() == null) {
             addConstraintViolation(context, "카드 정보 혹은 계좌정보는 필수입니다.", "payment");
             invalidCount += 1;
         }

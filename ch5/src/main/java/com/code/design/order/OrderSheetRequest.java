@@ -36,10 +36,6 @@ public class OrderSheetRequest {
         private Account account;
         private Card card;
 
-        @JsonIgnore
-        public boolean hasPaymentInfo() {
-            return account != null && card != null;
-        }
 
     }
 
