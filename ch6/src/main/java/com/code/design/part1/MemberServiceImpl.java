@@ -28,7 +28,6 @@ public class MemberServiceImpl implements MemberService {
     @Override
     public void changePassword(PasswordChangeRequest dto) {
         // 로직 구현...
-
     }
 
     @Override
