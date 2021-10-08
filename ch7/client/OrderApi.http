@@ -16,3 +16,8 @@ GET localhost:8080/carts
 Content-Type: application/json
 
 ###
+
+GET localhost:8080/orders
+Content-Type: application/json
+
+###

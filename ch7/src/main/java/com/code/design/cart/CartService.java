@@ -15,6 +15,11 @@ public class CartService {
     public void deleteCart(Order order) {
         System.out.println("CurrentTransactionName: " + TransactionSynchronizationManager.getCurrentTransactionName());
         cartRepository.deleteByProductId(order.getProductId());
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 //        throw new RuntimeException("runtime exception ...."); // 예외 발생
     }
 }
