@@ -13,7 +13,7 @@ class OrderLegacyTest {
     @Test
     public void anti_message_test_01() {
         final OrderLegacy orderLegacy = new OrderLegacy("KAKAO,EMAIL,SMS");
-        final String[] split = orderLegacy.getMessageTypes().split(",");
+        final String[] split = orderLegacy.getMessageTypes();
 
         then(split).contains("KAKAO", "EMAIL", "SMS");
     }
@@ -21,7 +21,7 @@ class OrderLegacyTest {
     @Test
     public void KAKAO를_KAOKO_라고_잘못_입력했을_경우() {
         final OrderLegacy orderLegacy = new OrderLegacy("KAOKO,EMAIL,SMS");
-        final String[] split = orderLegacy.getMessageTypes().split(",");
+        final String[] split = orderLegacy.getMessageTypes();
 
         then(split).doesNotContain("KAKAO");
         then(split).contains("EMAIL", "SMS");
@@ -30,7 +30,7 @@ class OrderLegacyTest {
     @Test
     public void 메시지에_KAKAO_EMAIL_SMS_처럼_공백이_들어_간다면_실패한다() {
         final OrderLegacy orderLegacy = new OrderLegacy("KAKAO, EMAIL, SMS");
-        final String[] split = orderLegacy.getMessageTypes().split(",");
+        final String[] split = orderLegacy.getMessageTypes();
 
         then(split).contains("KAKAO");
         then(split).doesNotContain("EMAIL", "SMS");
@@ -39,7 +39,7 @@ class OrderLegacyTest {
     @Test
     public void 메시지가_없을_때_빈문자열을_보낼_경우() {
         final OrderLegacy orderLegacy = new OrderLegacy("");
-        final String[] split = orderLegacy.getMessageTypes().split(",");
+        final String[] split = orderLegacy.getMessageTypes();
 
         then(split).contains("");
     }
@@ -47,7 +47,7 @@ class OrderLegacyTest {
     @Test
     public void 메시지가_없을_때_null_보내는_경우() {
         final OrderLegacy orderLegacy = new OrderLegacy(null);
-        thenThrownBy(() -> orderLegacy.getMessageTypes().split(","))
+        thenThrownBy(() -> orderLegacy.getMessageTypes())
             .isInstanceOf(NullPointerException.class);
 
     }
@@ -55,7 +55,7 @@ class OrderLegacyTest {
     @Test
     public void 메시지가_중복으로_올경우() {
         final OrderLegacy orderLegacy = new OrderLegacy("KAKAO, KAKAO, KAKAO");
-        final String[] split = orderLegacy.getMessageTypes().split(",");
+        final String[] split = orderLegacy.getMessageTypes();
 
         then(split).contains("KAKAO");
         then(split).hasSize(3);

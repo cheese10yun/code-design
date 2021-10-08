@@ -10,7 +10,7 @@ public class OrderLegacy {
         this.messageTypes = messageTypes;
     }
 
-    public String getMessageTypes() {
-        return messageTypes;
+    public String[] getMessageTypes() {
+        return messageTypes.split(",");
     }
 }
