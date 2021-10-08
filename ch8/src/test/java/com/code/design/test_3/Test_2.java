@@ -35,6 +35,6 @@ public class Test_2 {
     @Test
     public void thenThrownBy_사용법() {
         thenThrownBy(() -> new Member(""))
-            .isInstanceOf(IllegalArgumentException.class)
+            .isInstanceOf(IllegalArgumentException.class);
     }
 }
