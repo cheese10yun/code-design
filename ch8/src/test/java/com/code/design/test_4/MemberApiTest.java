@@ -4,7 +4,6 @@ package com.code.design.test_4;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import com.code.design.SignUpRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
