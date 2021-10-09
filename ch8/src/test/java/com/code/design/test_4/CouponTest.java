@@ -2,8 +2,6 @@ package com.code.design.test_4;
 
 import static org.assertj.core.api.BDDAssertions.then;
 import static org.assertj.core.api.BDDAssertions.thenThrownBy;
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.jupiter.api.Assertions.*;
 
 import com.code.design.Coupon;
 import java.time.LocalDate;
@@ -41,7 +39,6 @@ public class CouponTest {
 
         thenThrownBy(() -> coupon.apply())
             .isInstanceOf(IllegalStateException.class);
-
     }
 
     @Test

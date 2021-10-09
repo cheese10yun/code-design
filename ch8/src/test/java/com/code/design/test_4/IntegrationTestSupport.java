@@ -29,8 +29,6 @@ public  class IntegrationTestSupport {
     @Autowired
     protected MockMvc mockMvc;
 
-    public String asd ="asd";
-
     @Autowired
     private ResourceLoader resourceLoader;
 
