@@ -10,8 +10,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
-class MemberFindServiceMockTest extends MockTest {
+class MemberFindServiceMockTestSupport extends MockTestSupport {
 
+    // 외부 인프라
     @InjectMocks
     private MemberFindService memberFindService;
 

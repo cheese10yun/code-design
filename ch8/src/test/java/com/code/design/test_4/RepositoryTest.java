@@ -25,7 +25,7 @@ public class RepositoryTest {
     @Test
     public void member_test() {
         //given
-        final Member member = memberRepository.save(new Member("yun"));
+        memberRepository.save(new Member("yun"));
 
         //when
         final Member findMember = memberRepository.findByName("yun");

@@ -5,6 +5,8 @@ import static org.assertj.core.api.BDDAssertions.then;
 import com.code.design.Member;
 import com.code.design.MemberFindService;
 import com.code.design.MemberRepository;
+import java.util.List;
+import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 
 public class MemberFindServiceTest extends IntegrationTestSupport {
@@ -27,5 +29,13 @@ public class MemberFindServiceTest extends IntegrationTestSupport {
 
         //then
         then(member.getName()).isEqualTo("yun");
+    }
+
+    @AfterAll
+    void afterAll() {
+        final List<Member> members = memberRepository.findAll();
+        System.out.println("=============");
+        System.out.println("members size: " + members.size());
+        System.out.println("=============");
     }
 }
