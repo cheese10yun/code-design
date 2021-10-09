@@ -24,10 +24,12 @@ import org.springframework.web.context.WebApplicationContext;
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 @TestInstance(Lifecycle.PER_CLASS)
 @Transactional
-public abstract class IntegrationTestSupport {
+public  class IntegrationTestSupport {
 
     @Autowired
     protected MockMvc mockMvc;
+
+    public String asd ="asd";
 
     @Autowired
     private ResourceLoader resourceLoader;

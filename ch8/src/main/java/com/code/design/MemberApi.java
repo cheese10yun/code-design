@@ -10,11 +10,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/members")
 @RequiredArgsConstructor
 public class MemberApi {
-//    private MemberRepository memberRepository;
+    private final MemberRepository memberRepository;
 
     @PostMapping
     public void create(@RequestBody SignUpRequest dto) {
-//        memberRepository.save(dto.toEntity());
+        memberRepository.save(dto.toEntity());
     }
-
 }
