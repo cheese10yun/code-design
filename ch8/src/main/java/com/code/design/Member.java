@@ -28,4 +28,12 @@ public class Member {
         Assert.hasText(name, "name must not be empty");
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Member{" +
+            "id=" + id +
+            ", name='" + name + '\'' +
+            '}';
+    }
 }
