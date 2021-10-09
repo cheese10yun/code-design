@@ -1,5 +1,6 @@
 package com.code.design.test_4;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micrometer.core.instrument.util.IOUtils;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -24,11 +25,12 @@ import org.springframework.web.context.WebApplicationContext;
 @TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
 @TestInstance(Lifecycle.PER_CLASS)
 @Transactional
-public  class IntegrationTestSupport {
+public class IntegrationTestSupport {
 
     @Autowired
     protected MockMvc mockMvc;
-
+    @Autowired
+    protected ObjectMapper objectMapper;
     @Autowired
     private ResourceLoader resourceLoader;
 
@@ -42,7 +44,9 @@ public  class IntegrationTestSupport {
     }
 
     protected String readJson(final String path) throws IOException {
-        return IOUtils.toString(resourceLoader.getResource("classpath:" + path).getInputStream(),
-            StandardCharsets.UTF_8);
+        return IOUtils.toString(
+            resourceLoader.getResource("classpath:" + path).getInputStream(),
+            StandardCharsets.UTF_8
+        );
     }
 }
