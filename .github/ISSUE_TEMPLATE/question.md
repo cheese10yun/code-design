@@ -1,7 +1,7 @@
 ---
 name: question
 about: 패스트 캠퍼스 유지보수하기 좋은 코드 디자인 질문
-title: 'title'
+title: 패스트 캠퍼스 유지보수하기 좋은 코드 디자인 질문
 labels: question
 assignees: cheese10yun
 
